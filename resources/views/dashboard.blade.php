@@ -147,13 +147,13 @@
                 <div class="stat-card">
                     <div class="stat-icon">📚</div>
                     <h3>Total Courses</h3>
-                    <div class="number">{{ \App\Models\Course::count() }}</div>
+                    <div class="number">{{ $totalCourses }}</div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-icon">👨‍🎓</div>
                     <h3>Total Registrations</h3>
-                    <div class="number">{{ \App\Models\Registration::count() }}</div>
+                    <div class="number">{{ $totalRegistrations }}</div>
                 </div>
 
                 <div class="stat-card">

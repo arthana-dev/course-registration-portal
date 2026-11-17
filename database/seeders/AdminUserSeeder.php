@@ -9,15 +9,21 @@ class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $email = env('ADMIN_EMAIL', 'admin@example.com');
+        $email = config('course-portal.admin.email');
+        $password = config('course-portal.admin.password');
 
-        $user = User::firstOrNew(['email' => $email]);
+        if (! $email || ! $password) {
+            return;
+        }
 
-        $user->name = 'Portal Administrator';
-        $user->password = env('ADMIN_PASSWORD', 'ChangeMe123!');
-        $user->is_admin = true;
-        $user->email_verified_at = now();
-
-        $user->save();
+        User::firstOrCreate(
+            ['email' => $email],
+            [
+                'name' => 'Portal Administrator',
+                'password' => $password,
+                'is_admin' => true,
+                'email_verified_at' => now(),
+            ]
+        );
     }
 }
